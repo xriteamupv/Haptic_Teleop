@@ -12,7 +12,7 @@ This program captures the human hand position and movements, while it recognizes
 
 <img width="439" alt="Diagrama_Arm_Tracking" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b0721a8f-1492-43f7-91eb-9ce13c57ce72">
 
-TODO
+TODO: Specify Customizations. Add illustrative GIFs.
 
 ### robot_control.py using TrajectoryClient
 
@@ -20,12 +20,14 @@ This program manages the communication with Node (1), the robot movement charact
 
 <img width="510" alt="Diagrama_Robot_Control" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/4c406cb4-09da-4473-ab33-b3f991b2fd4d">
 
-TODO
+TODO: Specify Customizations. Add illustrative GIFs.
 
 ### Static Classes for Coordinates Mapping and Hand Models Configuration
 
-These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network.
+These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network. 
+
+By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
 <img width="673" alt="Static_Classes_Mapping" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/9594cb9a-a3bf-4e6c-9bf0-8336d61e6b42">
 
-TODO
+TODO: Specify Customizations. Add illustrative GIFs.
