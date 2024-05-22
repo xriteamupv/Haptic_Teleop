@@ -107,13 +107,20 @@ catkin_make
 ### (B) Put your TactGloves on and open the bHaptics Player - Node (3)
 
 ### (C) Open a terminal and run the tact_glove.py file - Node (3)
+
+This operation will open the communication between Node (3) and Node (2), and connect to bHaptics SDK.
+
 ````
 cd ~/haptic_glove
 py tact_glove.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
+
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (D) Source and launch ROS package for UR5e communication - Node (2)
+
+If successfull, this operation will set the communication between Node (2) and Node (1).
+
 ````
 cd ~/catkin_ws
 source devel/setup.bash
@@ -123,9 +130,14 @@ Note: Change ``<insert_robot_ip>`` and ``<insert_calibration_file.yaml>`` as nee
 
 ### (E) Start program grip_control.urp in Polyscope - Node (1)
 
-This program contains the Variables Setup, the Robot Program (with instructions to connect to host) and the RG Gripper initializer.
+This program contains the Variables Setup, the Robot Program with instructions to connect to host, and the RG Gripper initializer. 
+
+It should be previously loaded via USB to the UR5e Teach Pendant containing Polyscope.
 
 ### (F) Open other terminal and run the robot_control.py file - Node (2)
+
+This operation will open the communication between the Tracking Operation and the Robots Movement Controllers.
+
 ````
 cd ~/catkin_ws
 source devel/setup.bash
@@ -134,6 +146,9 @@ roslaunch haptic_u5e robot_control.py <param1> <value1> <param2> <value2> <param
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (G) Open another terminal and run the arm_tracking.py file - Node (2)
+
+This operation will activate the whole system. By default, a camera window should be displayed, which will start tracking the user's hand.
+
 ````
 cd ~/catkin_ws
 source devel/setup.bash
@@ -142,11 +157,3 @@ roslaunch haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (H) Enjoy the experience!
-
-## Program Description
-
-TODO
-
-![DiagramaUML_TFMv2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/f62a2cd5-4789-4598-8863-8f386493930a)
-
-TODO
