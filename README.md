@@ -105,19 +105,13 @@ catkin_make
 ### (A) Turn on and connect all devices from Nodes (1), (2), (3)
 
 ### (B) Put your TactGloves on and open the bHaptics Player - Node (3)
-````
-cd ~/catkin_ws
-source devel/setup.bash
-roslaunch haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3> <value3> ...
-````
-Note: Change <paramX> <valueX> as needed if you want to modify default application.
 
 ### (C) Open a terminal and run the tact_glove.py file - Node (3)
 ````
 cd ~/haptic_glove
 py tact_glove.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
-Note: Change <paramX> <valueX> as needed if you want to modify default application.
+Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (D) Source and launch ROS package for UR5e communication - Node (2)
 ````
@@ -137,7 +131,7 @@ cd ~/catkin_ws
 source devel/setup.bash
 roslaunch haptic_u5e robot_control.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
-Note: Change <paramX> <valueX> as needed if you want to modify default application.
+Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (G) Open another terminal and run the arm_tracking.py file - Node (2)
 ````
@@ -145,7 +139,7 @@ cd ~/catkin_ws
 source devel/setup.bash
 roslaunch haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
-Note: Change <paramX> <valueX> as needed if you want to modify default application.
+Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
 ### (H) Enjoy the experience!
 
