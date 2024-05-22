@@ -4,7 +4,7 @@ Video AI-based Teleoperation of UR5e Robot Arm and OnRobot RG2 Gripper using ROS
 
 ## Project Description
 
-The present project aims to develop an immersive teleoperation system for the remote contorl of a robotic arm. The system allows a user to manipulate remote objects imitating the movements of their own arm through movement capture sensors. The experience is enriched by haptic feedback, providing the user with a real contact sensation with the manipulated object.
+The present project aims to develop an immersive teleoperation system for the remote control of a robotic arm. The system allows a user to manipulate remote objects imitating the movements of their own arm through movement capture sensors. The experience is enriched by haptic feedback, providing the user with a real contact sensation with the manipulated object.
 
 <img width="1257" alt="DiagramaBloques_TFM" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/9e5c0d8f-71b3-4309-9508-f7687ed8bd68">
 
@@ -48,7 +48,7 @@ This node receives the strength information of the RG2 clamp of the robotic arm 
 
 ## Installation:
 
-### 1. Create workspace:
+### 1. Create workspace in Node (2):
 ``
 mkdir -p ~/catkin_ws/src
 ``
