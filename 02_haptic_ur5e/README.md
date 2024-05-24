@@ -1,19 +1,20 @@
 ## NODE (2) General Description
 
-- Capture of the position (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) and movements of the human arm through a camera or tracking device.
-- Gripper recognition, including how many fingers are involved in the grip.
+- Capture of the position (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) and movements of the human arm through a video camera or tracking device.
+- Recognize different gripper configurations, including how many fingers are involved in the grip.
+- Mapping of human movements to robot movements, including coordinates translation between both spatial domains.
 - Message Node (1) to set new positions (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>, yaw, pitch, roll) to the robot arm.
 - Message Node (1) to set new configurations (force, width, open/close) to the gripper.
-- Message Node (3) to set new configurations (intensity, duration) to haptic actuators on the glove.
+- Message Node (3) to set new configurations (intensity, duration) to each haptic actuator on the glove.
 
 ## Software Requirements:
-- ROS Noetic v.1.16.0
-- Base OS: Ubuntu 20.04
+- ROS Noetic v.1.16.0 (see [details](http://wiki.ros.org/noetic))
+- Base OS: Ubuntu 20.04 (see [details](http://wiki.ros.org/noetic/Installation/Ubuntu))
 - Python 3.8.3 (Python 3)
 
 ## Installation:
 
-### 1. Create workspace in Node (2):
+### 1. Create workspace:
 ``
 mkdir -p ~/catkin_ws/src
 ``
@@ -51,7 +52,7 @@ git clone https://github.com/xriteamupv/Haptic_Teleop.git
 
 Use ``02_haptic_ur5e`` package. Remove the rest.
 
-### 6. Compile packages - Node (2)
+### 6. Compile packages:
 ````
 cd ~/catkin_ws
 catkin_make
