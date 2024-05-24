@@ -1,4 +1,4 @@
-## NODE (2) Programs Description
+## NODE (2) General Description
 
 - Capture of the position (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) and movements of the human arm through a camera or tracking device.
 - Gripper recognition, including how many fingers are involved in the grip.
@@ -6,28 +6,53 @@
 - Message Node (1) to set new configurations (force, width, open/close) to the gripper.
 - Message Node (3) to set new configurations (intensity, duration) to haptic actuators on the glove.
 
-### arm_tracking.py using HandTracker
+## Software Requirements:
+- ROS Noetic v.1.16.0
+- Base OS: Ubuntu 20.04
+- Python 3.8.3 (Python 3)
 
-This program captures the human hand position and movements, while it recognizes pre-trained hand gestures such as 'OK' to activate robot control, or 'Grip 2F/3F/4F/5F' to detect the human grip with different amounts of fingers. In order to activate the robot control, the hand needs to be placed within an initial zone radius which can be configured together with other several customization option related to the tracking procedure .
+## Installation:
 
-<img width="439" alt="Diagrama_Arm_Tracking" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b0721a8f-1492-43f7-91eb-9ce13c57ce72">
+### 1. Create workspace in Node (2):
+``
+mkdir -p ~/catkin_ws/src
+``
 
-TODO: Specify Customizations. Add illustrative GIFs.
+### 2. Add Universal Robot package:
+````
+cd ~/catkin_ws/src
+git clone https://github.com/fmauch/universal_robot.git
+cd universal_robot
+git reset --hard 1ffdd69181389b14b7d6342f0c5bad3b45c5e32f
+````
+### 3. Add OnRobot RG2 package:
+TODO: Specify
 
-### robot_control.py using TrajectoryClient
+### 4. Install Python libraries:
+Use ``pip`` to install the default Python 3 versions of the libraries.
+See requirements.txt for libraries' versions.
 
-This program manages the communication with Node (1), the robot movement characteristics using Pose-based/Joint-based/Forward Cartesian Trajectory Controllers, and the gripper actions using Modbus through ROS. It also maps the coordinates from the tracking spatial domain to the robot spatial domain, as well as configures several customization options related to the interaction with the robots.
+````
+pip install numpy
+pip install rospy
+pip install actionlib
+pip install datetime
+pip install pymodbus
+pip install opencv-python
+pip install mediapipe
+pip install tensorflow
+````
 
-<img width="510" alt="Diagrama_Robot_Control" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/4c406cb4-09da-4473-ab33-b3f991b2fd4d">
+### 5. Add haptic_teleop packages:
+````
+cd ~/catkin_ws/src
+git clone https://github.com/xriteamupv/Haptic_Teleop.git
+````
 
-TODO: Specify Customizations. Add illustrative GIFs.
+Use ``02_haptic_ur5e`` package. Remove the rest.
 
-### Static Classes for Coordinates Mapping and Hand Models Configuration
-
-These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network. 
-
-By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
-
-<img width="673" alt="Static_Classes_Mapping" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/9594cb9a-a3bf-4e6c-9bf0-8336d61e6b42">
-
-TODO: Specify Customizations. Add illustrative GIFs.
+### 6. Compile packages - Node (2)
+````
+cd ~/catkin_ws
+catkin_make
+````
