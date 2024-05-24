@@ -6,31 +6,31 @@ Video AI-based Teleoperation of UR5e Robot Arm and OnRobot RG2 Gripper using ROS
 
 The present project aims to develop an immersive teleoperation system for the remote control of a robotic arm. The system allows a user to manipulate remote objects imitating the movements of their own arm through movement capture sensors. The experience is enriched by haptic feedback, providing the user with a real contact sensation with the manipulated object.
 
-<img width="612" alt="Diagram_System_EN" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/aabecd7d-0569-4d68-b8c7-eccac3815dea">
+<img width="1394" alt="General_Diagram_TFM_Final" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/d96a29e7-910c-428e-a2cd-e5657121c2e8">
 
-### The system is composed of three main nodes:
+### The system is composed of THREE MAIN NODES:
 
-#### (1) Robotic arm and gripper controller node:
+#### (1) Robotic arm and gripper controller node (see [gripper_ur5e](https://github.com/xriteamupv/Haptic_Teleop/tree/main/01_gripper_ur5e)):
 
 This node houses the UR5e robotic arm controller, the OnRobot RG2 gripper and the Polyscope communications interface. It is responsible for transmitting information from states (arm position, trajectories result, grip amplitude and strength), as well as receiving the movement instructions from the movement capture node and sending them to the robotic arm for their execution.
 
-#### (2) Movement capture and tracking node: 
+#### (2) Movement capture and tracking node (see [haptic_ur5e](https://github.com/xriteamupv/Haptic_Teleop/tree/main/02_haptic_ur5e)): 
 
 This node captures the movements of the human arm through a camera and the ``mediapipe`` library, or a tracking device. The movement data is processed and sent to the master controller node, indicating the robotic arm how to move using ROS and the ``rospy`` library to imitate user movements.
 
-#### (3) Haptic feedback management node:
+#### (3) Haptic feedback management node (see [haptic_gloves](https://github.com/xriteamupv/Haptic_Teleop/tree/main/03_haptic_gloves)):
 
 This node receives the force feedback information of the RG2 gripper from the robotic arm together with the result of the grip recognition. The information is processed and sent to the bHaptics tactile gloves using bHaptics Player and the ``tact-python`` library, providing the user with a sensory vibro-tactile feedback when the robotic arm contacts the manipulated object.
 
 ## Hardware Requirements:
 
-- Universal Robots UR5e robot arm or similar
-- OnRobot RG2 gripper or similar
+- Universal Robots UR5e robot arm or similar (see [specifications](https://www.universal-robots.com/es/productos/robot-ur5)
+- OnRobot RG2 gripper or similar (see [specifications](https://onrobot.com/en/products/rg2-gripper))
 - 1 computer for Node (2) for ROS and Mediapipe
 - 1 Video Camera compatible with Node (2) computer
-- 1 VIVE Trackers 3.0 or similar (optional)
+- 1 VIVE Trackers 3.0 or similar (optional, see [specifications](https://www.vive.com/eu/accessory/tracker3/))
 - 1 computer for Node (3) for bHaptics Player
-- 1 pair of bHaptics TactGloves
+- 1 pair of bHaptics TactGloves DK2 or similar (see [specifications](https://www.bhaptics.com/shop/tactglove))
 
 ## User Manual
 
