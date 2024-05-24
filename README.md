@@ -44,7 +44,7 @@ This operation will open the communication between Node (3) and Node (2), and co
 
 ````
 cd ~/haptic_glove
-py tact_glove.py <param1> <value1> <param2> <value2> <param3> <value3> ...
+python3 tact_glove.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
 
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
@@ -73,9 +73,9 @@ This operation will open the communication between the Tracking Operation and th
 ````
 cd ~/catkin_ws
 source devel/setup.bash
-roslaunch haptic_u5e robot_control.py <param1> <value1> <param2> <value2> <param3> <value3> ...
+rosrun haptic_u5e robot_control.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
-Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
+Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application. See customization parameters [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/02_haptic_ur5e/src).
 
 ### (G) Open another terminal and run the arm_tracking.py file - Node (2)
 
@@ -84,8 +84,8 @@ This operation will activate the whole system. By default, a camera window shoul
 ````
 cd ~/catkin_ws
 source devel/setup.bash
-roslaunch haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3> <value3> ...
+rosrun haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
-Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
+Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application. See customization parameters [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/02_haptic_ur5e/src).
 
 ### (H) Enjoy the experience!
