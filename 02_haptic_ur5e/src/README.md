@@ -6,7 +6,7 @@ This program captures the human hand position and movements, while it recognizes
 
 #### Customization Parameters:
 
-- ``--device <int>``: Camera device identifier (default: 0).
+- ``--device <int>``: Camera device identifier (default: 0, i.e. integrated camera).
 - ``--width <int>``: Video width as quantity of pixels (default: 960).
 - ``--height <int>``: Video height as quantity of pixels (default: 540).
 - ``--initial <int 0-8>``: Initial position to enable tracking: up_left, up_center, up_right, ..., low_right (default: 4, i.e. mid_center).
@@ -24,6 +24,24 @@ TODO: Add illustrative GIFs.
 
 This program manages the communication with Node (1), the robot movement characteristics using Pose-based/Joint-based/Forward Cartesian Trajectory Controllers, and the gripper actions using Modbus through ROS. It also maps the coordinates from the tracking spatial domain to the robot spatial domain, as well as configures several customization options related to the interaction with the robots.
 
+#### Customization Parameters:
+
+- ``--mapping <int 0-3>``: Mapping algorithm (default: 0, i.e. linear_mapping), see subsection below for specifications.
+- ``--controller <int 0-2>``: Goal-based Cartesian Controller: (pose-based/joint-based/forward
+- ``--initial <int 0-8>``: Initial position of robot arm: up_left, up_center, up_right, ..., low_right (default: 4, i.e. mid_center).
+- ``--oneaxis <int 0-2>``: Enable the robot arm to move in only 1 axis: x, y, z (default: None, i.e. movement in all 3 axis). 
+- ``--twoaxis <int>``: Enable the robot arm to move in only 2 axis: xy, yz, xz (default: None, i.e. movement in all 3 axis). 
+- ``--duration <int>``: Movement duration configuration: fixed-value (0), dynamic mirroring (1), linear position-based (2). (default: 2)
+- ``--velocity <int 0-2>``: Movement velocity configuration: self-adjusting (0), fixed value (1), linear dynamic (2). (default 0)
+- ``--acceleration <int>``: Movement acceleration configuration: self-adjusting (0), fixed value (1), linear dynamic (2). (default 0)
+- ``--precision <float>``: Movement tolerance, avoiding trajectories with an euclidean distance less than provided value. (default: 0.0)
+- ``--wait_time <float>``: Waiting time in milliseconds for the reception of new commands. (default: None, i.e. self-adjusting)
+- ``--mimic <bool True/False>``: Order the robot arm to mimic the user's movements (default: False, i.e. mirror user's movement).
+- ``--inverted <bool True/False>``: Order the robot to invert only the up-down movement (default: False, i.e. no inversion).
+- ``--bidirectional <bool True/False>``: Enable bidirectional communication with arm_tracking.py and haptic_control.py.
+
+TODO: Add illustrative GIFs.
+
 ### haptic_control.py using HapticsClient
 
 TODO: Add Description.
@@ -36,4 +54,4 @@ These classes provide additional functionalities for several types of mappings o
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
-TODO: Specify Customizations. Add illustrative GIFs.
+TODO: Add specifications. Add illustrative GIFs.
