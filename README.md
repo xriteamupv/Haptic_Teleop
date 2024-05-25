@@ -36,7 +36,7 @@ This node receives the force feedback information of the RG2 gripper from the ro
 
 ### (A) Turn on and connect all devices from Nodes (1), (2), (3)
 
-### (B) Put your TactGloves on and open the bHaptics Player - Node (3)
+### (B) Put your TactGloves on and link them to bHaptics Player - Node (3)
 
 ### (C) Open a terminal and run the tactile_ctrl.py file - Node (3)
 
@@ -46,6 +46,8 @@ This operation will open the communication between Node (3) and Node (2), and co
 cd ~/haptic_glove
 python3 tact_glove.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
+
+Success Indicator: Output ``Link Established. Waiting for commands from Node (2) ...``
 
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application.
 
@@ -58,13 +60,15 @@ cd ~/catkin_ws
 source devel/setup.bash
 roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=<insert_robot_ip> kinematics_config:=<insert_calibration_file.yaml>
 ````
+Success Indicator: Output (...) ``Connection established`` (...)
+
 Note: Change ``<insert_robot_ip>`` and ``<insert_calibration_file.yaml>`` as needed.
 
-### (E) Start program grip_control.urp in Polyscope - Node (1)
+### (E) Turn robot arm on and start program grip_control.urp in Polyscope - Node (1)
 
-This program contains the Variables Setup, the Robot Program with instructions to connect to host, and the RG Gripper initializer. 
+This program contains the Variables Setup, the Robot Program with instructions to connect to host, and the RG Gripper initializer. It should be previously loaded via USB to the UR5e Teach Pendant containing Polyscope.
 
-It should be previously loaded via USB to the UR5e Teach Pendant containing Polyscope.
+Success Indicator: Output (...) ``Robot requested program`` (...) ``Sent program to robot`` (...) ``Robot ready to receive commands``
 
 ### (F) Open other terminal and run the robot_control.py file - Node (2)
 
@@ -75,6 +79,8 @@ cd ~/catkin_ws
 source devel/setup.bash
 rosrun haptic_u5e robot_control.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
+Success Indicator: Output ``Link Established. Waiting for commands from Tracking Program ...``
+
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application. See customization parameters [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/02_haptic_ur5e/src).
 
 ### (G) Open another terminal and run the arm_tracking.py file - Node (2)
@@ -86,6 +92,12 @@ cd ~/catkin_ws
 source devel/setup.bash
 rosrun haptic_u5e arm_tracking.py <param1> <value1> <param2> <value2> <param3> <value3> ...
 ````
+
+Success Indicator: Output ``System started, currently tracking your hand ...``
+
 Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify default application. See customization parameters [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/02_haptic_ur5e/src).
 
 ### (H) Enjoy the experience!
+
+![TBBT_v3](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/5eedd5d6-0d82-471a-a48e-1e65c28d1364)
+
