@@ -1,4 +1,4 @@
-## NODE (2) Programs Dsecription
+## NODE (2) Programs Description
 
 ### S01: arm_tracking.py using HandTracker
 
@@ -55,3 +55,5 @@ These classes provide additional functionalities for several types of mappings o
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
 TODO: Add specifications. Add illustrative GIFs.
+
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b087dd99-a71d-4471-bdcb-dddbc066ff06
