@@ -7,6 +7,8 @@
 - Message Node (1) to set new configurations (force, width, open/close) to the gripper.
 - Message Node (3) to set new configurations (intensity, duration) to each haptic actuator on the glove.
 
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/74c7db00-5f4c-46bd-9c35-dd18b6ad5ccc
+
 ## Software Requirements:
 - ROS Noetic v.1.16.0 (see [details](http://wiki.ros.org/noetic))
 - Base OS: Ubuntu 20.04 (see [details](http://wiki.ros.org/noetic/Installation/Ubuntu))
