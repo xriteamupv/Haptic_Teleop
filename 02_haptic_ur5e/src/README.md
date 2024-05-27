@@ -54,6 +54,7 @@ These classes provide additional functionalities for several types of mappings o
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
-TODO: Add specifications. Add illustrative GIFs.
+![Camera_X-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/19dd6225-8897-481d-8a5e-b3d53b81ef5b)
+![Camera_Y-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/cf1b8552-1099-4ba2-8dbd-ca7c83675270)
+![Camera_Z-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/020745a7-33cd-4aee-a949-f0b0791de7cb)
 
-https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b087dd99-a71d-4471-bdcb-dddbc066ff06
