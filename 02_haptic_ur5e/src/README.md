@@ -18,7 +18,9 @@ This program captures the human hand position and movements, while it recognizes
 - ``--with_orientation <bool True/False>``: Enable Tracking Hand Orientation as (yaw, pitch, roll) perpendicular to palm.
 - ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
 
-TODO: Add illustrative GIFs.
+![Camera_Tracking0](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/98138255-2a55-4677-a15a-83877282d8c8)
+![Camera_Tracking1](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/dde7e680-4246-47f7-ba51-e9710f80a5fe)
+![Camera_Tracking2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/ec74b0e0-a10b-4d70-9570-10100b338a39)
 
 ### S02: robot_control.py using TrajectoryClient
 
