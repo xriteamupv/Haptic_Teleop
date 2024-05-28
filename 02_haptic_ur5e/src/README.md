@@ -18,9 +18,7 @@ This program captures the human hand position and movements, while it recognizes
 - ``--with_orientation <bool True/False>``: Enable Tracking Hand Orientation as (yaw, pitch, roll) perpendicular to palm.
 - ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
 
-![Camera_Tracking0](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/98138255-2a55-4677-a15a-83877282d8c8)
-![Camera_Tracking1](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/dde7e680-4246-47f7-ba51-e9710f80a5fe)
-![Camera_Tracking2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/ec74b0e0-a10b-4d70-9570-10100b338a39)
+<img src="../../images/Camera_Tracking0.gif" width="300"/> <img src="../../images/Camera_Tracking1.gif" width="300"/> <img src="../../images/Camera_Tracking2.gif" width="300"/>
 
 ### S02: robot_control.py using TrajectoryClient
 
@@ -44,7 +42,7 @@ This program manages the communication with Node (1), the robot movement charact
 
 TODO: Add illustrative GIFs.
 
-### haptic_control.py using HapticsClient
+### S03: haptic_control.py using HapticsClient
 
 TODO: Add Description.
 
@@ -56,10 +54,6 @@ These classes provide additional functionalities for several types of mappings o
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
-![Camera_X-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/19dd6225-8897-481d-8a5e-b3d53b81ef5b)
-![Camera_Y-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/cf1b8552-1099-4ba2-8dbd-ca7c83675270)
-![Camera_Z-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/020745a7-33cd-4aee-a949-f0b0791de7cb)
+<img src="../../images/Camera_X-axis.gif" width="300"/> <img src="../../images/Camera_Y-axis.gif" width="300"/> <img src="../../images/Camera_Z-axis.gif" width="300"/>
 
-![Robot_X-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b8620e97-9ca4-4284-9345-6db3f3beb47f)
-![Robot_Y-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/9295118d-7449-415f-b14f-138ed1deb858)
-![Robot_Z-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/ad3f7d7f-46e1-4757-b978-d34f51813bf7)
+<img src="../../images/Robot_X-axis2.gif" width="300"/> <img src="../../images/Robot_Z-axis2.gif" width="300"/> <img src="../../images/Robot_Y-axis2.gif" width="300"/>
