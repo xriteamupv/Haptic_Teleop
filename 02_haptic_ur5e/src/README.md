@@ -40,7 +40,7 @@ This program manages the communication with Node (1), the robot movement charact
 - ``--inverted <bool True/False>``: Order the robot to invert only the up-down movement (default: False, i.e. no inversion).
 - ``--bidirectional <bool True/False>``: Enable bidirectional communication with arm_tracking.py and haptic_control.py.
 
-TODO: Add illustrative GIFs.
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/93e2517c-a3ea-402b-b4f3-6ad22aa5f216
 
 ### S03: haptic_control.py using HapticsClient
 
