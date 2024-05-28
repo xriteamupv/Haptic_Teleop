@@ -60,3 +60,6 @@ By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R
 ![Camera_Y-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/cf1b8552-1099-4ba2-8dbd-ca7c83675270)
 ![Camera_Z-axis](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/020745a7-33cd-4aee-a949-f0b0791de7cb)
 
+![Robot_X-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/b8620e97-9ca4-4284-9345-6db3f3beb47f)
+![Robot_Y-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/9295118d-7449-415f-b14f-138ed1deb858)
+![Robot_Z-axis2](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/ad3f7d7f-46e1-4757-b978-d34f51813bf7)
