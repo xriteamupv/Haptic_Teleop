@@ -99,5 +99,4 @@ Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify defau
 
 ### (H) Enjoy the experience!
 
-![TBBT_v3](https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/5eedd5d6-0d82-471a-a48e-1e65c28d1364)
-
+<img src="images/TBBT_RobotArm.gif" width="500"/>
