@@ -99,4 +99,4 @@ Note: Change ``<paramX>`` and ``<valueX>`` as needed if you want to modify defau
 
 ### (H) Enjoy the experience!
 
-<img src="images/TBBT_RobotArm.gif" width="500"/>
+<img src="images/TBBT_RobotArm2.gif" width="500"/>
