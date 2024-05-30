@@ -9,16 +9,18 @@ This program captures the human hand position and movements, while it recognizes
 - ``--device <int>``: Camera device identifier (default: 0, i.e. integrated camera).
 - ``--width <int>``: Video width as quantity of pixels (default: 960).
 - ``--height <int>``: Video height as quantity of pixels (default: 540).
-- ``--initial <int 0-8>``: Initial position to enable tracking: up_left, up_center, up_right, ..., low_right (default: 4, i.e. mid_center).
-- ``--tracking <int 0-2>``: Hand landmarks filter: entire hand, palm+index+thumb, palm (default: 0, i.e. entire hand)
-- ``--use_static_image_mode``: Enables Hand Detection to run every input image (default: treat the input images as video stream).
-- ``--min_detection_confidence <float 0.0-1.0>``: Minimum detection confidence for gesture recognition (default 0.7).
-- ``--min_tracking_confidence <float 0.0-1.0>``: Minimum tracking confidence for movement precision (default 0.5).
-- ``--record <str_video_name>``: Enable MP4 video recording and specify the video filename (default: None, i.e. not recording).
+- ``--initial <int 0-8>``: Initial position to enable tracking: up_left, up_center, up_right, ..., low_right. (Default: 4, i.e. mid_center).
+- ``--tolerance <int 0-2>``: Tolerance for establishing initial position: low (0), medium (1), high (2) tolerance. (Default: 1).
+- ``--tracking <int 0-2>``: Hand landmarks filter: entire hand (0), palm+index+thumb (1), palm (2). (Default: 0, i.e. entire hand).
+- ``--gloves_color <int 0-3>``: Hands or Gloves color: no gloves (0), blue (1), yellow (2), black (3). (Default: 1, i.e. blue gloves)
+- ``--use_static_image_mode``: Enables Hand Detection to run every input image. (Default: treat the input images as video stream).
+- ``--min_detection_confidence <float 0.0-1.0>``: Minimum detection confidence for gesture recognition. (Default 0.7).
+- ``--min_tracking_confidence <float 0.0-1.0>``: Minimum tracking confidence for movement precision. (Default 0.5).
+- ``--record <str_video_name>``: Enable MP4 video recording and specify the video filename. (Default: None, i.e. not recording).
 - ``--with_orientation <bool True/False>``: Enable Tracking Hand Orientation as (yaw, pitch, roll) perpendicular to palm.
 - ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
 
-<img src="../../images/Camera_Tracking0.gif" width="300"/> <img src="../../images/Camera_Tracking1.gif" width="300"/> <img src="../../images/Camera_Tracking2.gif" width="300"/>
+<img src="../../images/Camera_Tracking0.gif" width="320"/> <img src="../../images/Camera_Tracking1.gif" width="320"/> <img src="../../images/Camera_Tracking2.gif" width="320"/>
 
 ### S02: robot_control.py using TrajectoryClient
 
@@ -40,7 +42,7 @@ This program manages the communication with Node (1), the robot movement charact
 - ``--inverted <bool True/False>``: Order the robot to invert only the up-down movement (default: False, i.e. no inversion).
 - ``--bidirectional <bool True/False>``: Enable bidirectional communication with arm_tracking.py and haptic_control.py.
 
-https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/93e2517c-a3ea-402b-b4f3-6ad22aa5f216
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/36a92451-97c0-49b8-a2c8-ce360fbad63c
 
 ### S03: haptic_control.py using HapticsClient
 
@@ -54,6 +56,6 @@ These classes provide additional functionalities for several types of mappings o
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
-<img src="../../images/Camera_X-axis.gif" width="300"/> <img src="../../images/Camera_Y-axis.gif" width="300"/> <img src="../../images/Camera_Z-axis.gif" width="300"/>
+<img src="../../images/Camera_X-axis.gif" width="320"/> <img src="../../images/Camera_Y-axis.gif" width="320"/> <img src="../../images/Camera_Z-axis.gif" width="320"/>
 
-<img src="../../images/Robot_X-axis2.gif" width="300"/> <img src="../../images/Robot_Z-axis2.gif" width="300"/> <img src="../../images/Robot_Y-axis2.gif" width="300"/>
+<img src="../../images/Robot_X-axis2.gif" width="320"/> <img src="../../images/Robot_Z-axis2.gif" width="320"/> <img src="../../images/Robot_Y-axis2.gif" width="320"/>
