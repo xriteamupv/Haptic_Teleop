@@ -6,7 +6,14 @@ Video AI-based Teleoperation of UR5e Robot Arm and OnRobot RG2 Gripper using ROS
 
 The present project aims to develop an immersive teleoperation system for the remote control of a robotic arm. The system allows a user to manipulate remote objects imitating the movements of their own arm through movement capture sensors. The experience is enriched by haptic feedback, providing the user with a real contact sensation with the manipulated object.
 
+### Functional Overview:
+
 <img width="1394" alt="General_Diagram_TFM_Final" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/d96a29e7-910c-428e-a2cd-e5657121c2e8">
+
+### Structure Overview:
+
+<img width="1254" alt="General_Diagram_TFM_Final_v2" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/4cdc82d7-0b7d-4abd-a32f-d2a7e680fe35">
+
 
 ### The system is composed of THREE MAIN NODES:
 
