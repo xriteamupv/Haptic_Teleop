@@ -33,20 +33,20 @@ git clone https://github.com/xriteamupv/Haptic_Teleop.git
 
 ### 2. Keep the RTHN_Remote_Node folder contents and remove the rest:
 ````
-move -y ./RTHN_Remote_Node/* ./
-rm -r ./RTHN_Remote_Node
-rm -r ./LCON_Local_Node
-rm -r ./Teloperation_Local_Node
+move /y ./RTHN_Remote_Node/* ./
+rmdir /s ./RTHN_Remote_Node
+rmdir /s ./LCON_Local_Node
+rmdir /s ./Teloperation_Local_Node
 ````
 
-### 3. Modify the following files with your corresponding addresses:
+### 3. Modify the following files with your corresponding directories:
 ````
 ./haptic_ur5e/src/utils/Classifier.py
 ./haptic_ur5e/src/model/keypoint_classifier/keypoint_classifier.py
 ./haptic_ur5e/src/model/point_history_classifier/point_history_classifier.py
 ````
 
-If you decide to use Windows Subsystem for Linux (WSL), you have to modify the addresses of:
+If you decide to use Windows Subsystem for Linux (WSL), you have to modify the directories of:
 ````
 ./init_remote_node.sh
 ./initialize_remote_node.sh
