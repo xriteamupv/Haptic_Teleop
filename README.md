@@ -14,7 +14,7 @@ The present project aims to develop an immersive teleoperation system for the re
 
 This node houses the UR5e robotic arm controller, the OnRobot RG2 gripper and the Polyscope communications interface, thus existing in the same physical location as the robot. 
 
-It is responsible for transmitting information from states (arm position, trajectories result, grip width and strength) using ROS packages, ``rospy`` library and XML-RPC as well as receiving the movement instructions from the remote camera tracking and sending them to the robotic arm and gripper for their execution. This is possible due to an additional URScript program loaded in the UR Teach Pendant, which uses 2 Threads in order to enable External Robot Control and Gripper Manipulation.
+It is responsible for transmitting information from states (arm position, trajectories result, grip width and strength) using ROS packages, ``rospy`` library and XML-RPC as well as receiving the movement instructions from the remote camera tracking and sending them to the robotic arm and gripper for their execution. This is possible due to an additional URScript program loaded in the UR Teach Pendant, which uses 2 Threads in order to enable simultaneous External Robot Control and Gripper Manipulation.
 
 Finally, it also sends gripper information, such as conditional object detection, width variation and initial force, to the remote haptic program for further processing.
 
@@ -22,7 +22,7 @@ Finally, it also sends gripper information, such as conditional object detection
 
 This node contains the Tracking Device, like a 3D camera or specialized tracker, and the bHaptics TactGloves DK1, both of which can be operated far from the Local Node and physical robots.
 
-It captures the movements of the human arm using the ``mediapipe`` library and recognizes several possibilities of grip gestures through a customized CNN that also differentiates between grips of 2, 3, 4 and 5 fingers for a more immersive experience. The movement and gesture data is processed and sent to the Local Node, while afterwards receiving gripper characteristics which are mapped to vibration intensity values and sent as complex haptic sensations for the tactile gloves using bHaptics Player and the ``tact-python`` library.
+It captures the movements of the human arm using the ``mediapipe`` library and recognizes several possibilities of grip gestures through a customized CNN that also differentiates between grips of 2, 3, 4 and 5 fingers using ``tensorflow`` for a more immersive experience. The movement and gesture data is processed and sent to the Local Node, while afterwards receiving gripper characteristics which are mapped to vibration intensity values and sent as complex haptic sensations for the tactile gloves using bHaptics Player and the ``tact-python`` library.
 
 ## Hardware Requirements:
 
