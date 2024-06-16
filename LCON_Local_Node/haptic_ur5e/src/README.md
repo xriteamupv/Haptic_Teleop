@@ -1,35 +1,14 @@
-## NODE (2) Programs Description
+## LCON Programs Description
 
-### S01: arm_tracking.py using HandTracker
+### S01: robot_control.py using TrajectoryClient
 
-This program captures the human hand position and movements, while it recognizes pre-trained hand gestures such as 'OK' to activate robot control, or 'Grip 2F/3F/4F/5F' to detect the human grip with different amounts of fingers. In order to activate the robot control, the hand needs to be placed within an initial zone radius which can be configured together with other several customization option related to the tracking procedure.
-
-#### Customization Parameters:
-
-- ``--device <int>``: Camera device identifier (default: 0, i.e. integrated camera).
-- ``--width <int>``: Video width as quantity of pixels (default: 960).
-- ``--height <int>``: Video height as quantity of pixels (default: 540).
-- ``--initial <int 0-8>``: Initial position to enable tracking: up_left, up_center, up_right, ..., low_right. (Default: 4, i.e. mid_center).
-- ``--tolerance <int 0-2>``: Tolerance for establishing initial position: low (0), medium (1), high (2) tolerance. (Default: 1).
-- ``--tracking <int 0-2>``: Hand landmarks filter: entire hand (0), palm+index+thumb (1), palm (2). (Default: 0, i.e. entire hand).
-- ``--gloves_color <int 0-3>``: Hands or Gloves color: no gloves (0), blue (1), yellow (2), black (3). (Default: 1, i.e. blue gloves)
-- ``--use_static_image_mode``: Enables Hand Detection to run every input image. (Default: treat the input images as video stream).
-- ``--min_detection_confidence <float 0.0-1.0>``: Minimum detection confidence for gesture recognition. (Default 0.7).
-- ``--min_tracking_confidence <float 0.0-1.0>``: Minimum tracking confidence for movement precision. (Default 0.5).
-- ``--record <str_video_name>``: Enable MP4 video recording and specify the video filename. (Default: None, i.e. not recording).
-- ``--with_orientation <bool True/False>``: Enable Tracking Hand Orientation as (yaw, pitch, roll) perpendicular to palm.
-- ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
-
-<img src="../../images/Camera_Tracking0.gif" width="320"/> <img src="../../images/Camera_Tracking1.gif" width="320"/> <img src="../../images/Camera_Tracking2.gif" width="320"/>
-
-### S02: robot_control.py using TrajectoryClient
-
-This program manages the communication with Node (1), the robot movement characteristics using Pose-based/Joint-based/Forward Cartesian Trajectory Controllers, and the gripper actions using Modbus through ROS. It also maps the coordinates from the tracking spatial domain to the robot spatial domain, as well as configures several customization options related to the interaction with the robots.
+This program manages the communication with Polyscope, the robot arm movement characteristics using Pose-based/Joint-based/Forward Cartesian Trajectory Controllers, and the gripper actions using Modbus through ROS. It also maps the coordinates from the tracking spatial domain to the robot spatial domain, as well as configures several customization options related to the interaction with the robots.
 
 #### Customization Parameters:
 
+``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
 - ``--mapping <int 0-3>``: Mapping algorithm (default: 0, i.e. linear_mapping), see subsection below for specifications.
-- ``--controller <int 0-2>``: Goal-based Cartesian Controller: (pose-based/joint-based/forward
+- ``--controller <int 0-2>``: Goal-based Cartesian Controller: Pose-based (0), Joint-based (1), Forward trajectory controllers (2). Default: 0.
 - ``--initial <int 0-8>``: Initial position of robot arm: up_left, up_center, up_right, ..., low_right (default: 4, i.e. mid_center).
 - ``--oneaxis <int 0-2>``: Enable the robot arm to move in only 1 axis: x, y, z (default: None, i.e. movement in all 3 axis). 
 - ``--twoaxis <int>``: Enable the robot arm to move in only 2 axis: xy, yz, xz (default: None, i.e. movement in all 3 axis). 
@@ -40,19 +19,45 @@ This program manages the communication with Node (1), the robot movement charact
 - ``--wait_time <float>``: Waiting time in milliseconds for the reception of new commands. (default: None, i.e. self-adjusting)
 - ``--mimic <bool True/False>``: Order the robot arm to mimic the user's movements (default: False, i.e. mirror user's movement).
 - ``--inverted <bool True/False>``: Order the robot to invert only the up-down movement (default: False, i.e. no inversion).
-- ``--bidirectional <bool True/False>``: Enable bidirectional communication with arm_tracking.py and haptic_control.py.
+- ``--bidirectional <bool True/False>``: Enable bidirectional communication with tracking_control.py and gripper_control.py.
 
-https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/36a92451-97c0-49b8-a2c8-ce360fbad63c
+### S02: gripper_control.py using HapticsClient
 
-### S03: haptic_control.py using HapticsClient
+This program controls the grip movements and robot communications according to the tracking characteristics, including opening/closing the gripper to an objective width (1D position), detecting possible objects begin gripped and informing the Remote Node for haptic feedback. It also regulates the strength that needs to be applied to the grip movement, which determines its duration and open/close force.
 
-TODO: Add Description.
+- ``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
+- ``--max_width <float>``: Maximum width allowed for the gripper. This constraints the gripper range of movement. Default 100.
+- ``--max_force <float>``: Maximum force allowed for the gripper. This constraints the gripper range of speed. Default 40.
+- ``--start_width <float>``: Initial width when starting the gripper_control program. It can be more than max_width. Default 100.
+- ``--width_tolerance <float>``: Deadband for gripper width. The gripper won't do movements less than this width variation. Default 2.
+- ``--force_tolerance <float>``: Deadband for gripper force. The gripper won't do movements less than this force variation. Default 2.
+- ``--max_duration <float>``: Default 60.
+- ``--time_max_width <float>``: Default 5.
+- ``--static_force <float>``: Unique constant force value used in the case of standard non-variante force model. Default 39 (Newtons).
+- ``--width_model <int>``: Model used for mapping Grip Levels to Objective Width, such as Fixed by Levels (0), Linear Regulation (1), and GripperMapper models (2-5). Default 0.
+- ``--force_model <int>``: Model used for mapping Temporal Conditions to Initial Force, such as Static Force (0), Dynamic Force (1), and GripperMapper models (2-5). Default 0.
+- ``--delay_model <int>``: Model used for varying the delay between the application of successive instructions to the robot, such as Static Delay (0), Linearly Variant Delay (1) and DelayModel methods (2-5). Default 1.
+- ``--grip_levels <int>``: Maximum amount of grip levels to consider (open, soft, medium, hard, close). Default 4.
+- ``--bidirectional <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
 
-TODO: Specify Customizations. Add illustrative GIFs.
+parser.add_argument( "--communication_mode", type = int, default = 0 )
+parser.add_argument( "--max_width", type = float, default = 100.0 )
+parser.add_argument( "--max_force", type = float, default = 40.0 )
+parser.add_argument( "--start_width", type = float, default = 100.0 )
+parser.add_argument( "--width_tolerance", type = float, default = 2.0 )
+parser.add_argument( "--force_tolerance", type = float, default = 2.0 )
+parser.add_argument( "--max_duration", type = float, default = 60.0 ) # mseconds
+parser.add_argument( "--time_max_width", type = float, default = 5.0 ) # seconds
+parser.add_argument( "--static_force", type = float, default = 39.0 ) # Netwons
+parser.add_argument( "--width_model", type = int, default = 0 )
+parser.add_argument( "--force_model", type = int, default = 0 )
+parser.add_argument( "--delay_model", type = int, default = 1 )
+parser.add_argument( "--grip_levels", type = int, default = 4 ) # CHECK 3 or 4
+parser.add_argument( "--bidirectional", type = int, default = 0 ) #PENDING
 
 ### Static Classes for Coordinates Mapping and Hand Models Configuration
 
-These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network. 
+These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>).
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
