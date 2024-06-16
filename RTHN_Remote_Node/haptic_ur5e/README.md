@@ -1,4 +1,4 @@
-## NODE (2) Programs Description
+## RTHN Programs Description
 
 ### S01: tracking_control.py using HandTracker
 
@@ -19,41 +19,37 @@ This program captures the human hand position and movements, while it recognizes
 - ``--min_tracking_confidence <float 0.0-1.0>``: Minimum tracking confidence for movement precision. (Default 0.5).
 - ``--record <str_video_name>``: Enable MP4 video recording and specify the video filename. (Default: None, i.e. not recording).
 - ``--with_orientation <bool True/False>``: Enable Tracking Hand Orientation as (yaw, pitch, roll) perpendicular to palm.
-- ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
+- ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with robot_control.py and gripper_control.py.
 
 <img src="../../images/Camera_Tracking0.gif" width="320"/> <img src="../../images/Camera_Tracking1.gif" width="320"/> <img src="../../images/Camera_Tracking2.gif" width="320"/>
 
-### S03: haptic_control.py using HapticsClient
+### S02: haptic_control.py using HapticClient
 
 This program processes grip output characteristics and sends it to the haptic glove that is being used. The required grip outputs are width variation (i.e. difference between objective_width and current_width in millimeters), initial gripping force (Newtons 0.0-100.0), amount of fingers used (2-6), and a timestamp with the grip occurance time. The required haptic inputs are actuators indexes (0-5), sensation intensity (percentage 0.0-100.0), and stimuli duration in milliseconds.
 
 #### Customization Parameters:
 
 - ``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
-- ``--max_fingers <int>``: Default: 6 (5F+Palm).
-- ``--min_intensity <float>``: Default: 10.
-- ``--max_intensity <float>``: Default: 100.
-- ``--precision_duration <float>``: Default: 100.
-- ``--precision_width <float>``: Default: 3.3.
-- ``--initial_delay <float>``: Default: 0.
-- ``--final_delay <float>``: Default: 0.
-- ``--width_weight <float>``: Default: 0.7.
-- ``--width_threshold <float>``: Default: 70.
-- ``--intensity_shift <float>``: Default: 0.
-- ``--static_intensity <float>``: Default: 80.
-- ``--intensity_model <int>``: Default: 0.
-- ``--right_hand_enabled <bool True/False>``: Default: True.
-- ``--discrete_sensations <bool True/False>``: Default: True.
-- ``--bidirectional_comms <bool True/False>``: Default: False.
+- ``--max_fingers <int>``: Maximum amount of fingers to consider. This limits the quantity of actuators to use. Default: 6 (5F+Palm).
+- ``--min_intensity <float>``: Minimum vibration intensity to apply to the gloves. This limits the glove activations. Default: 10.
+- ``--max_intensity <float>``: Maximum vibration intensity to apply to the gloves. This limits the glove activations. Default: 100.
+- ``--precision_duration <float>``: Deadband for duration specification. Durations less than this will not be considered. Default: 100.
+- ``--precision_width <float>``: Deadband for width variation specification. Widths less than this will not be considered. Default: 3.3.
+- ``--initial_delay <float>``: Sensation initial delay, intended for experimental purposes of time-delayed sensations. Default: 0.
+- ``--final_delay <float>``: Sensation final delay, intended for experimental purposes of time-delayed sensations. Default: 0.
+- ``--width_weight <float>``: Width threshold intended for all the Weighted Interpolation Methods as Intensity Models. Default: 0.7.
+- ``--width_threshold <float>``: Width threshold intended for the Biased Weighted Interpolation Method as Intensity Model. Default: 70.
+- ``--intensity_shift <float>``: Range shift for the intensity model considered, so to feel stronger or weaker sensations. Default: 0.
+- ``--static_intensity <float>``: Basic constant intensity in case of standard non-variant intensity model. Default: 80.
+- ``--intensity_model <int>``: Mapping model for width variation and force to vibration intensity within specified range. Default: 0.
+- ``--right_hand_enabled <bool True/False>``: Specifiation of the current hand used together with the haptic glove. Default: True.
+- ``--discrete_sensations <bool True/False>``: Discrete sensations (i.e. several iterations of little vibrations) or Continous sensations (i.e. one long vibration). Default: True.
+- ``--bidirectional_comms <bool True/False>``: Enable bidirectional communication with tracking_control and gripper_control.py. Default: False.
 
 TODO: Add illustrative GIFs.
 
 ### Static Classes for Coordinates Mapping and Hand Models Configuration
 
-These classes provide additional functionalities for several types of mappings of (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) to (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network. 
+These classes provide additional functionalities for several types of mappings of (width_variation, initial_force) to (sensations_intensity), and for training new gestures or enhance pre-trained existing recognitions of the hand detection's neural network. 
 
-By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
-
-<img src="../../images/Camera_X-axis.gif" width="320"/> <img src="../../images/Camera_Y-axis.gif" width="320"/> <img src="../../images/Camera_Z-axis.gif" width="320"/>
-
-<img src="../../images/Robot_X-axis2.gif" width="320"/> <img src="../../images/Robot_Z-axis2.gif" width="320"/> <img src="../../images/Robot_Y-axis2.gif" width="320"/>
+TODO: Add illustrative GIFs.
