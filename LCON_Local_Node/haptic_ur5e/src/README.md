@@ -33,8 +33,8 @@ This program controls the grip movements and robot communications according to t
 - ``--start_width <float>``: Initial width when starting the gripper_control program. It can be more than max_width. Default 100.
 - ``--width_tolerance <float>``: Deadband for gripper width. The gripper won't do movements less than this width variation. Default 2.
 - ``--force_tolerance <float>``: Deadband for gripper force. The gripper won't do movements less than this force variation. Default 2.
-- ``--max_duration <float>``: Default 60.
-- ``--time_max_width <float>``: Default 5.
+- ``--max_duration <float>``: Maximum duration for methods differentiation in Dynamic Force Model. Default 60.
+- ``--time_max_width <float>``: Customized maximum delay between max_width and close position. Default 5.
 - ``--static_force <float>``: Unique constant force value used in the case of standard non-variante force model. Default 39 (Newtons).
 - ``--width_model <int>``: Model used for mapping Grip Levels to Objective Width, such as Fixed by Levels (0), Linear Regulation (1), and GripperMapper models (2-5). Default 0.
 - ``--force_model <int>``: Model used for mapping Temporal Conditions to Initial Force, such as Static Force (0), Dynamic Force (1), and GripperMapper models (2-5). Default 0.
@@ -48,6 +48,6 @@ These classes provide additional functionalities for several types of mappings o
 
 By default, note that x<sub>H</sub> = - x<sub>R</sub>; y<sub>H</sub> = - z<sub>R</sub>; z<sub>H</sub> =  y<sub>R</sub>. Also note that the position ranges for each direction differ between spatial domains.
 
-<img src="../../images/Camera_X-axis.gif" width="320"/> <img src="../../images/Camera_Y-axis.gif" width="320"/> <img src="../../images/Camera_Z-axis.gif" width="320"/>
+<img src="../../../images/Camera_X-axis.gif" width="320"/> <img src="../../../images/Camera_Y-axis.gif" width="320"/> <img src="../../../images/Camera_Z-axis.gif" width="320"/>
 
-<img src="../../images/Robot_X-axis2.gif" width="320"/> <img src="../../images/Robot_Z-axis2.gif" width="320"/> <img src="../../images/Robot_Y-axis2.gif" width="320"/>
+<img src="../../../images/Robot_X-axis2.gif" width="320"/> <img src="../../../images/Robot_Z-axis2.gif" width="320"/> <img src="../../../images/Robot_Y-axis2.gif" width="320"/>
