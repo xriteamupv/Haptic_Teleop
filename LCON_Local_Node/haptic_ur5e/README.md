@@ -2,7 +2,7 @@
 
 ### Functionalities
 
-- Control of the trajectories of robot arm using coordinates (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>) and orientation (Quaternion(x,y,z,w)) together with gripper movements (width, force/speed) limited to their defined spatial domain.
+- Control of the trajectories of robot arm using coordinates (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>) and orientation (Quaternion(RX, RY, RZ) = (x<sub>Q</sub>, y<sub>Q</sub>, z<sub>Q</sub>)) together with gripper movements (width, force/speed) limited to their defined spatial domain.
 - Object detection when current_width is different than objective_width after a preconfigured time. Grip levels (open, soft grip, medium grip, hard grip, close) configuration for different objective widths and width variations.
 - Management and customizations of movement sensibilities for particular spatial ranges, and communication or processing delays for remote interactions on the local system.
 
@@ -39,10 +39,21 @@ git clone https://github.com/fmauch/universal_robot.git
 cd universal_robot
 git reset --hard 1ffdd69181389b14b7d6342f0c5bad3b45c5e32f
 ````
-### 3. Add OnRobot RG2 package:
-TODO: Specify
 
-### 4. Install Python libraries:
+### 3. Clone the repository including the LCON_Local_Node folder:
+````
+cd <destination_folder>
+git clone https://github.com/xriteamupv/Haptic_Teleop.git
+````
+
+### 4. Keep the LCON_Local_Node folder contents and remove the rest:
+````
+cd <destination_folder>
+mv ./Haptic_Teleop-main/LCON_Local_Node/* ~/catkin_ws/src
+rm -r ./Haptic_Teleop-main
+````
+
+### 5. Install Python libraries:
 Use ``pip`` to install the default Python 3 versions of the libraries.
 See requirements.txt for libraries' versions.
 
@@ -52,18 +63,7 @@ pip install rospy
 pip install actionlib
 pip install datetime
 pip install pymodbus
-pip install opencv-python
-pip install mediapipe
-pip install tensorflow
 ````
-
-### 5. Add haptic_teleop packages:
-````
-cd ~/catkin_ws/src
-git clone https://github.com/xriteamupv/Haptic_Teleop.git
-````
-
-Use ``02_haptic_ur5e`` package. Remove the rest.
 
 ### 6. Compile packages:
 ````
