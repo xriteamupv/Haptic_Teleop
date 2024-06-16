@@ -11,11 +11,13 @@ This subgroup of classes are responsible for the human movement tracking and han
 <img height="339" alt="Node2_TrackingControl_V2" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/37564d44-b66a-4176-a88a-a7ea551e6b75">
 
 
-### S03: Haptic Enablers Conditioning (Main: HapticsClient)
+### S03: Haptic Enablers Conditioning (Main: HapticClient)
 
 This subgroup of classes are responsible for the conditioning of haptic enablers received from the Tracking Intelligence and the Trajectory Management, intended to provide the Haptic Feedback node with pre-analyzed characteristics (i.e. vibration intensity and duration) and configurations (i.e. actuator/s to activate) for the tactile gloves.
 
-TODO: Add UML Diagram with classes.
+<img height="339" alt="HapticClient_Updated062024" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/5d271f92-e3dc-45b2-9c62-2be7ad057dcf">
+
+
 <img height="339" alt="Node2_HapticControl" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/223c5ac7-d864-4a60-b634-716d2e4097b2">
 
 ### Static Classes
