@@ -16,7 +16,7 @@
 - *Gesture Model*: Deep-learning training model and customizations for gesture recognition and additions.
 - *Haptic Mappers*: Mathematical models that map gripper outputs (width variation and grip force) to haptic inputs (vibration intensity). 
 
-TODO: AGREGAR VIDEO CON GUANTES
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/92af8927-5ead-4723-b952-0a3a0c9af104
 
 ## Software Requirements:
 - bHaptics Player (see [details](https://www.bhaptics.com/software/player/))
