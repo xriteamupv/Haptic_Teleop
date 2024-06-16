@@ -8,9 +8,10 @@
 
 ### Communications
 
-- Reception of Message from RTHN (tracking_control) related to movement tracking and basic grip instructions.
+- Reception of Messages from RTHN (tracking_control) related to movement tracking and basic grip instructions.
 - Communication with UR robot arm via Polyscope for movement specification through RTDE and Goal-Based Cartesian Trajectory Controllers.
 - Communication with OnRobot gripper via Polyscope for gripping actions through Modbus and XML Remote Procedure Call protocols.
+- Transmission of Messages to RTHN (haptic_control) related to grip characteristics and object detection.
 
 ### Models and Mappings
 
