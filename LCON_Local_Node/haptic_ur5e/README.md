@@ -18,7 +18,7 @@
 - *Gripper Mapper*: Mappings of grip levels to objective widths, and temporal properties to initial force/speed of the gripping action.
 - *Trajectory Mapper*: Mappings of human movements to robot movements, including coordinates translation between both spatial domains.
 
-TODO: Add Illustrative Video.
+https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/36a92451-97c0-49b8-a2c8-ce360fbad63c
 
 ## Software Requirements:
 - ROS Noetic v.1.16.0 (see [details](http://wiki.ros.org/noetic))
