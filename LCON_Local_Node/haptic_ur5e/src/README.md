@@ -6,7 +6,7 @@ This program manages the communication with Polyscope, the robot arm movement ch
 
 #### Customization Parameters:
 
-``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
+- ``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
 - ``--mapping <int 0-3>``: Mapping algorithm (default: 0, i.e. linear_mapping), see subsection below for specifications.
 - ``--controller <int 0-2>``: Goal-based Cartesian Controller: Pose-based (0), Joint-based (1), Forward trajectory controllers (2). Default: 0.
 - ``--initial <int 0-8>``: Initial position of robot arm: up_left, up_center, up_right, ..., low_right (default: 4, i.e. mid_center).
@@ -21,9 +21,11 @@ This program manages the communication with Polyscope, the robot arm movement ch
 - ``--inverted <bool True/False>``: Order the robot to invert only the up-down movement (default: False, i.e. no inversion).
 - ``--bidirectional <bool True/False>``: Enable bidirectional communication with tracking_control.py and gripper_control.py.
 
-### S02: gripper_control.py using HapticsClient
+### S02: gripper_control.py using GripClient
 
 This program controls the grip movements and robot communications according to the tracking characteristics, including opening/closing the gripper to an objective width (1D position), detecting possible objects begin gripped and informing the Remote Node for haptic feedback. It also regulates the strength that needs to be applied to the grip movement, which determines its duration and open/close force.
+
+#### Customization Parameters:
 
 - ``--communication_mode <int>``: Communication flows as specified [here](https://github.com/xriteamupv/Haptic_Teleop/tree/main/comms).
 - ``--max_width <float>``: Maximum width allowed for the gripper. This constraints the gripper range of movement. Default 100.
@@ -39,21 +41,6 @@ This program controls the grip movements and robot communications according to t
 - ``--delay_model <int>``: Model used for varying the delay between the application of successive instructions to the robot, such as Static Delay (0), Linearly Variant Delay (1) and DelayModel methods (2-5). Default 1.
 - ``--grip_levels <int>``: Maximum amount of grip levels to consider (open, soft, medium, hard, close). Default 4.
 - ``--bidirectional <bool True/False>``: Enable bidirectional communication with robot_control.py and haptic_control.py.
-
-parser.add_argument( "--communication_mode", type = int, default = 0 )
-parser.add_argument( "--max_width", type = float, default = 100.0 )
-parser.add_argument( "--max_force", type = float, default = 40.0 )
-parser.add_argument( "--start_width", type = float, default = 100.0 )
-parser.add_argument( "--width_tolerance", type = float, default = 2.0 )
-parser.add_argument( "--force_tolerance", type = float, default = 2.0 )
-parser.add_argument( "--max_duration", type = float, default = 60.0 ) # mseconds
-parser.add_argument( "--time_max_width", type = float, default = 5.0 ) # seconds
-parser.add_argument( "--static_force", type = float, default = 39.0 ) # Netwons
-parser.add_argument( "--width_model", type = int, default = 0 )
-parser.add_argument( "--force_model", type = int, default = 0 )
-parser.add_argument( "--delay_model", type = int, default = 1 )
-parser.add_argument( "--grip_levels", type = int, default = 4 ) # CHECK 3 or 4
-parser.add_argument( "--bidirectional", type = int, default = 0 ) #PENDING
 
 ### Static Classes for Coordinates Mapping and Hand Models Configuration
 
