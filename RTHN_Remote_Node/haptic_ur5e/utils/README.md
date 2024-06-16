@@ -6,7 +6,7 @@ The classes used in the programs ``tracking_control.py`` and ``haptic_control.py
 
 This subgroup of classes are responsible for the human movement tracking and hand gestures recognition. This involves the tracking algorithms specification for model configuration, the hand landmarks visualization for user feedback, the system state for action registries, and the pre-processed keypoints history for movement predictions.
 
-<img height="339" alt="HandTracker_Updated062024" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/27b6bd63-293c-484a-b467-1d4b45faf62d">
+<img height="339" alt="HandTracker_Updated062024" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/5f4d374c-9eb5-40b3-8a26-0d725571b952">
 
 <img height="339" alt="Node2_TrackingControl_V2" src="https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/37564d44-b66a-4176-a88a-a7ea551e6b75">
 
