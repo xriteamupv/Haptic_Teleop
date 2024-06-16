@@ -1,13 +1,24 @@
-## NODE (2) General Description
+## LCON General Description
 
-- Capture of the position (x<sub>H</sub>, y<sub>H</sub>, z<sub>H</sub>) and movements of the human arm through a video camera or tracking device.
-- Recognize different gripper configurations, including how many fingers are involved in the grip.
-- Mapping of human movements to robot movements, including coordinates translation between both spatial domains.
-- Message Node (1) to set new positions (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>, yaw, pitch, roll) to the robot arm.
-- Message Node (1) to set new configurations (force, width, open/close) to the gripper.
-- Message Node (3) to set new configurations (intensity, duration) to each haptic actuator on the glove.
+### Functionalities
 
-https://github.com/xriteamupv/Haptic_Teleop/assets/38531693/74c7db00-5f4c-46bd-9c35-dd18b6ad5ccc
+- Control of the trajectories of robot arm using coordinates (x<sub>R</sub>, y<sub>R</sub>, z<sub>R</sub>) and orientation (Quaternion(x,y,z,w)) together with gripper movements (width, force/speed) limited to their defined spatial domain.
+- Object detection when current_width is different than objective_width after a preconfigured time. Grip levels (open, soft grip, medium grip, hard grip, close) configuration for different objective widths and width variations.
+- Management and customizations of movement sensibilities for particular spatial ranges, and communication or processing delays for remote interactions on the local system.
+
+### Communications
+
+- Reception of Message from RTHN (tracking_control) related to movement tracking and basic grip instructions.
+- Communication with UR robot arm via Polyscope for movement specification through RTDE and Goal-Based Cartesian Trajectory Controllers.
+- Communication with OnRobot gripper via Polyscope for gripping actions through Modbus and XML Remote Procedure Call protocols.
+
+### Models and Mappings
+
+- *Delay Model*: Models intended for counter communication and processing delays, and make movements smoother, safer and more precise.
+- *Gripper Mapper*: Mappings of grip levels to objective widths, and temporal properties to initial force/speed of the gripping action.
+- *Trajectory Mapper*: Mappings of human movements to robot movements, including coordinates translation between both spatial domains.
+
+TODO: Add Illustrative Video.
 
 ## Software Requirements:
 - ROS Noetic v.1.16.0 (see [details](http://wiki.ros.org/noetic))
