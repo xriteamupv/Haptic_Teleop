@@ -9,5 +9,6 @@ from utils.EventManager import EventManager
 from utils.GripLimitator import GripLimitator
 
 from utils.TrajectoryMapper import TrajectoryMapper
-from utils.GripMapper import GripMapper
+from utils.WidthMapper import WidthMapper
+from utils.ForceMapper import ForceMapper
 from utils.DelayModel import DelayModel
