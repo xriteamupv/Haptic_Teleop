@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import time
 from utils.GripLimitator import GripLimitator
+from utils.WidthMapper import WidthMapper
+from utils.ForceMapper import ForceMapper
 
 class Gripper():
 
@@ -14,7 +16,22 @@ class Gripper():
         self.force_tolerance = args.force_tolerance # 2
         self.max_duration = args.max_duration # 60.0 msec
         self.time_max_width = args.time_max_width # 2 sec
+        self.widths_default = [99, 80, 60, 40, 0]
         self.limitator = GripLimitator(args)
+        self.perform_model_adaptations(args)
+
+    def perform_model_adaptations(self, args):
+        self.poly_reg = None
+        self.svr_model = None
+        self.spline_model = None
+        adapted_levels = range(args.grip_levels+1)
+        adapted_widths = self.widths_default[0:(args.grip_levels+1)]
+        if args.width_model == 3:
+            self.poly_reg_model = WidthMapper.prep_poly_regression_width(adapted_levels,adapted_widths)
+        elif args.width_model == 4:
+            self.svm_model = WidthMapper.train_support_vector_machine_width(adapted_levels,adapted_widths)
+        elif args.width_model == 5:
+            self.spline_model = WidthMapper.prep_cubic_splin(adapted_levels,adapted_widths)
 
     def on_open_or_close(self):
         self.objective_width = 99.0
@@ -42,38 +59,39 @@ class Gripper():
         return abs(self.objective_width - self.current_width)
     
     def configure_width(self, grip_level):
-        if self.width_model == 2:
-            # GRIP MAPPER LEVEL WIDTH
-            c = 0
-        elif self.width_model == 1:
-            self.objective_width = ((4-grip_level) * self.limitator.get_width_range()) / 4 # 4 grip levels
-        else:
-            if grip_level == 0:
-                self.objective_width = 99.0
-            elif grip_level == 1:
-                self.objective_width = 80.0
-            elif grip_level == 2:
-                self.objective_width = 60.0
-            elif grip_level == 3:
-                self.objective_width = 40.0
-            elif grip_level == 4:
-                self.objective_width = 0.0
+        if self.width_model == 5: # CUBIC SPLINE
+            self.objective_width = self.grip_levels - WidthMapper.cubic_spline_width(grip_level, self.spline_model)
+        elif self.width_model == 4: # SUPPORT VECTOR MACHINE
+            self.objective_width = self.grip_levels - WidthMapper.predict_support_vector_machine_width(grip_level, self.svm_model)
+        elif self.width_model == 3: # POLYNOMIAL REGRESSION
+            self.objective_width = self.grip_levels - WidthMapper.polynomial_regression_width(grip_level, self.poly_reg_model)
+        elif self.width_model == 2: # INTERVAL DETECTION LINEAR INTERPOLATION
+            self.objective_width = self.grip_levels - WidthMapper.interval_detection_width(grip_level)
+        elif self.width_model == 1: # LINEAR INTERPOLATION
+            #self.objective_width = ((4-grip_level) * self.limitator.get_width_range()) / 4 # 4 grip levels
+            self.objective_width = self.grip_levels - WidthMapper.linear_interpolation_width(grip_level)
+        else: # DEFAULT
+            self.objective_width = self.widths_default[grip_level]
 
     def configure_force(self, static_force, time_delta):
-        #if self.force_model in (1,2):
         time_diff_msec = round(float(time_delta.microseconds)*0.001, 3) 
         print("TIME_DIFF: ", time_diff_msec)
-        if self.force_model == 2:
-            #GRIP MAPPER FORCE TIME
-            c = 0
-        elif self.force_model == 1:
+        if self.force_model == 5: # CUBIC SPLINE
+            self.objective_force = ForceMapper.cubic_spline_force(time_diff_msec)
+        elif self.force_model == 4: # PIECEWISE CUADRATIC
+            self.objective_force = ForceMapper.piecewise_quadratic_mapping_force(time_diff_msec)
+        elif self.force_model == 3: # EXPONENTIAL DECAY
+            self.objective_force = ForceMapper.exponential_decay_force(time_diff_msec)
+        elif self.force_model == 2: # LINEAR MAPPING
+            self.objective_force = ForceMapper.linear_mapping_force(time_diff_msec)
+        elif self.force_model == 1: # DYNAMIC FORCE
             if time_diff_msec > self.max_duration:
                 self.objective_force = static_force
                 print("STATIC FORCE: ", self.objective_force)
             else:
                 self.objective_force = (time_diff_msec * self.limitator.get_force_range()) / self.max_duration # MAPEO DE FUERZA o EFFORT CON TIEMPO
                 print("DYNAMIC FORCE: ", self.objective_force)
-        else:
+        else: # STATIC FORCE
             self.objective_force = static_force # default
     
     def configure_delay(self):
@@ -81,7 +99,7 @@ class Gripper():
             # DELAY MODEL GRIPPER
             c = 0
         elif self.delay_model == 1:
-            max_time = self.time_max_width # seconds - time between min and max posicion
+            max_time = self.time_max_width # seconds - time between min and max position
             time_required = (self.get_width_variation() * max_time) / self.get_max_width_difference()
             time.sleep(time_required)
         else:
